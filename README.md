@@ -48,10 +48,10 @@ unzip clash-linux.zip
 chmod +x ./clash-linux-amd64-v1.10.0
 ```
 
-6. Run the clash in the background. Replace `tizi.yml` with your configuration file. And you should keep the terminal running. 
+6. Run the clash in the background. Replace `Tudo.yml` with your configuration file. And you should keep the terminal running. 
 
 ```bash
-./clash-linux-amd64-v1.10.0 -f tizi.yml
+./clash-linux-amd64-v1.10.0 -f Tudo.yml
 ```
 
 7. Export the proxy to the system.
