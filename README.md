@@ -28,7 +28,7 @@ chmod 600 ~/.ssh/authorized_keys
 
 ## How to configure the VPN
 
-1. Install the clash in this (website)[https://glados.rocks/tools/clash-linux.zip]
+1. Install the clash in this [website](https://glados.rocks/tools/clash-linux.zip)
 
 2. Upload the `clash-linux.zip` file to the server. You can use WinSCP to upload the file.
 
@@ -134,7 +134,7 @@ pip install -r requirements.txt
 nvidia-smi
 ```
 
-2. Go to the official (website)[https://pytorch.org/get-started/previous-versions/] to find the corresponding version of Pytorch.
+2. Go to the official [website](https://pytorch.org/get-started/previous-versions/) to find the corresponding version of Pytorch.
 
 3. Install the Pytorch.
 
