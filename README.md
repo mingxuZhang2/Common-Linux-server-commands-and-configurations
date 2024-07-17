@@ -235,3 +235,9 @@ df -h
 ```bash
 uname -a
 ```
+
+10. Look up the size of the folder.
+
+```bash
+du -sh folder
+```
