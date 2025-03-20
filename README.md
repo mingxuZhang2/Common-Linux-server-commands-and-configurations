@@ -241,3 +241,25 @@ uname -a
 ```bash
 du -sh folder
 ```
+
+## How to Download the file from Google Drive
+
+1. Install the `gdown` package.
+
+```bash
+pip install gdown
+```
+
+2. Download the file from Google Drive.
+
+```bash
+gdown --id file_id
+```
+
+Tips: You can find the file_id in the share link, for example, the URL is `https://drive.google.com/file/d/file_id/view`, then the file_id is `file_id`.
+
+3. Unzip the file.
+
+```bash
+unzip file_name
+```
