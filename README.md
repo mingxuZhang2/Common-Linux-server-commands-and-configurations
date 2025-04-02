@@ -263,3 +263,27 @@ Tips: You can find the file_id in the share link, for example, the URL is `https
 ```bash
 unzip file_name
 ```
+
+## How to transfer the file from one serverer to another server
+
+1. Install the `rsync` package.
+
+```bash
+sudo apt-get install rsync
+```
+
+2. Transfer the file from one server to another server.
+
+```bash
+rsync -avz -e "ssh -p port" /path/to/file username@server:/path/to/file
+```
+3. Transfer the file from one server to another server with the password.
+
+```bash
+rsync -avz -e "sshpass -p password ssh -p port" /path/to/file username@server:/path/to/file
+```
+4. Transfer the file from one server to another server with the password and the progress.
+
+```bash
+rsync -avz --progress -e "sshpass -p password ssh -p port" /path/to/file username@server:/path/to/file
+```
