@@ -87,4 +87,118 @@ Host hkust-gz
 ```
 
 
+---
+
+## 🛠 Step-by-Step Tutorial: Using ClashX with ZeroOmega Without System Proxy (macOS + Ivanti VPN)
+
+There is also another solution for this scenario:  
+**If we use Ivanti, we cannot access ClashX, especially on macOS.**  
+Previously, we usually relied on **ClashX as the system proxy**, but this often causes conflicts with Ivanti VPN.  
+This guide shows how to use **ZeroOmega** (an enhanced version of SwitchyOmega) to route **only browser traffic** through ClashX, while keeping the system proxy disabled.
+
+---
+
+### 🔧 Step 1: Install ZeroOmega in Chrome
+
+1. Open Chrome.
+2. Visit the **ZeroOmega GitHub Releases Page** (search “ZeroOmega GitHub”).
+3. Download the `.zip` or `.crx` file for the latest version.
+4. Go to `chrome://extensions/`.
+5. Enable **Developer Mode** (top right).
+6. Click **“Load unpacked”** and select the unzipped folder  
+   _or_ drag the `.crx` file into Chrome to install.
+7. The ZeroOmega icon should now appear in your Chrome toolbar.
+
+---
+
+### ⚙️ Step 2: Configure ClashX (Enable Necessary Ports)
+
+1. Launch **ClashX** on macOS.
+2. Click the menu bar icon → **Preferences** → **General**.
+3. Ensure the following settings:
+   - ✅ **Allow connections from LAN**
+   - ✅ **Enable HTTP Proxy** (default port: `7890`)
+   - Optional: Enable **SOCKS5 Proxy** (port `7891`) if you prefer SOCKS5
+4. ❌ **Do not enable “Set as System Proxy”**  
+   This avoids conflict with Ivanti VPN.
+
+---
+
+### 🧩 Step 3: Set Up ZeroOmega Proxy Profile
+
+**Option A: Use HTTP Proxy (Recommended)**
+
+1. Click the ZeroOmega extension icon.
+2. Go to **Options** → Add Profile → **Fixed Profile**.
+3. Name the profile: `proxy`.
+4. Under “Proxy Rules”, configure:
+   - **Protocol:** `HTTP`
+   - **Server:** `127.0.0.1`
+   - **Port:** `7890`
+5. Click **Save**.
+
+**Option B: Use SOCKS5 Proxy**
+
+> _Only use this if SOCKS5 is enabled in ClashX._
+
+- **Protocol:** `SOCKS5`
+- **Port:** `7891`
+
+---
+
+### 🧪 Step 4: Test Your Setup
+
+1. Click the ZeroOmega icon.
+2. Switch to your `proxy` profile.
+3. Visit websites like:
+   - https://www.google.com
+   - https://www.youtube.com
+4. If they load correctly, your browser is routing traffic through ClashX successfully.
+
+---
+
+### 🚫 Step 5: Keep System Proxy Disabled
+
+- Do **not** enable system proxy in ClashX.
+- Ivanti VPN will continue handling internal/intranet access.
+- Only **browser traffic** (via ZeroOmega) uses ClashX for external sites.
+
+---
+
+## ✅ Result
+
+You have successfully:
+
+- ✅ Avoided system-level proxy conflicts with Ivanti
+- ✅ Routed browser traffic (e.g. Chrome) through ClashX
+- ✅ Maintained internal resource access via Ivanti VPN
+- ✅ Accessed external sites (Google, YouTube) freely
+
+---
+
+## 💡 Bonus: ZeroOmega Profile JSON (Optional)
+
+If you'd like to import a proxy profile via JSON:
+
+```json
+{
+  "+proxy": {
+    "bypassList": [
+      { "conditionType": "BypassCondition", "pattern": "127.0.0.1" },
+      { "conditionType": "BypassCondition", "pattern": "::1" },
+      { "conditionType": "BypassCondition", "pattern": "localhost" }
+    ],
+    "color": "#99ccee",
+    "fallbackProxy": {
+      "host": "127.0.0.1",
+      "port": 7890,
+      "scheme": "http"
+    },
+    "name": "proxy",
+    "profileType": "FixedProfile"
+  },
+  "-startupProfileName": "proxy",
+  "schemaVersion": 2
+}
+
 
